@@ -19,8 +19,9 @@
 ## 🖼️ Model Architecture
 
 The overall architecture of the proposed SWFN framework is shown below:
+![model](https://github.com/user-attachments/assets/0acfb710-8856-42bd-aa1e-8b08e6f4f5ce)
 
-![Uploading model.jpg…]()
+
 
 
 
