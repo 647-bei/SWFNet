@@ -1,24 +1,55 @@
-# SWFNet: A Spiking-Wavelet Fusion Network for Quality Enhancement of VVC-Compressed 360-Degree Video
+<div align="center">
 
-[![Status](https://img.shields.io/badge/Status-Submitted-yellow.svg)]()
+# SWFNet: A Spiking-Wavelet Fusion Network for Frame-Level Quality Enhancement of VVC-Compressed 360-Degree Video
 
-> 📢 **Note:** This repository is the official implementation of the paper **"SWFNet: A Spiking-Wavelet Fusion Network for Quality Enhancement of VVC-Compressed 360-Degree Video"**.
->
-> **The full source code will be made publicly available immediately upon the acceptance of the paper.**
 
-## 📖 Introduction
 
-**SWFNet** is a novel neuromorphic-inspired architecture designed for the quality enhancement of VVC-compressed 4K and 8K panoramic videos. Functionally inspired by the **Magnocellular-Parvocellular (M-P)** dual-stream mechanism of the primate visual system, SWFNet explicitly decouples restoration into:
+</div>
 
-* **Global Stream (M-pathway):** Utilizes a **Transformer-SNN (TransSNN)** backbone to capture long-range structural dependencies and correct ERP geometric distortions via energy-efficient sparse spiking.
-* **Local Stream (P-pathway):** Employs **Residual Wavelet Fusion (RWF)** modules to resolve high-frequency spatial details and remove quantization artifacts.
+## 🔎 Framework
 
-### Key Highlights:
-* **🧠 Bio-Inspired Framework:** Synergizes global structural modeling with local fine-grained texture recovery, effectively handling the conflict between geometric correction and detail restoration.
-* **⚡ Extreme Efficiency:** Achieves state-of-the-art fidelity with only **1.48M parameters** and **2.32 GFLOPs**, reducing computational costs by **~96%** compared to NAFNet.
-* **🚀 8K Scalability:** The only tested model capable of feasible inference on **8K (8192×4096)** inputs, avoiding the Out-Of-Memory (OOM) issues common in conventional ViT-based models.
+SWFNet is a hybrid CNN-SNN framework for frame-level quality enhancement of VVC-compressed 360-degree video in the Equirectangular Projection (ERP) format. Inspired by the Magnocellular-Parvocellular (M-P) dual-stream mechanism, it combines sparse global structural modeling with multi-scale local texture restoration.
 
-## 🖼️ Model Architecture
+![SWFNet framework](SWFNet_GitHub_Assets/images/fig03_swfnet_architecture.png)
 
-The overall architecture of the proposed SWFNet framework is shown below:
-![SWFNet Architecture](https://github.com/user-attachments/assets/0acfb710-8856-42bd-aa1e-8b08e6f4f5ce)
+The global M-pathway employs Transformer-SNN (TransSNN) blocks and Spiking Channel Attention (SCAtten) for sparse, content-adaptive structural modeling. The local P-pathway employs Residual Wavelet Fusion Blocks (RWFBs) to restore high-frequency details affected by VVC quantization.
+
+## 📊 Reported Results
+
+![Quantitative comparison](SWFNet_GitHub_Assets/images/table02_quantitative_results.png)
+
+SWFNet uses 1.48M parameters and 10.30 GFLOPs. On the reported 4K test set, it achieves the best PSNR and MS-SSIM among the compared methods; on the 8K test set, it achieves the best PSNR, SSIM, and MS-SSIM.
+
+<details>
+<summary><b>🖼️ Visual Results and Ablation Studies</b></summary>
+
+<br>
+
+
+![4K visual comparison](SWFNet_GitHub_Assets/images/fig10_qualitative_4k.png)
+
+![8K visual comparison](SWFNet_GitHub_Assets/images/fig11_qualitative_8k.png)
+
+![Module ablation](SWFNet_GitHub_Assets/images/table04_ablation_modules.png)
+
+
+
+</details>
+
+
+
+## 🎓 Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@article{cao2026swfnet,
+  title={SWFNet: A Spiking-Wavelet Fusion Network for Frame-Level Quality Enhancement of VVC-Compressed 360-Degree Video},
+  author={Cao, Ziyi and Yin, Haibing and Wang, Hongkui and Li, Tiansong and Huang, Xiaofeng and Zhang, Jiyong},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  year={2026}
+}
+```
+## ❤️ Acknowledgement
+
+We thank the authors of [AFD-former](https://github.com/House-yuyu/AFD-former) for their valuable work and open-source contribution.
